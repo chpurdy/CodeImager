@@ -8,6 +8,10 @@ I use it to turn programs I have written into images so that students cannot jus
 
 To run from the command line:
 
+`python imager.py`
+
+will allow you to select the text file and the image file to write using a file dialog, but only allows black on white coloring for now.
+
 `python imager.py <textfile> <imagefile> (colorscheme)`
 
 `colorscheme` is either `bw` for black on white or `wb` for white on black (more to come!)  If no `colorscheme` is given, it will default to white on black.
