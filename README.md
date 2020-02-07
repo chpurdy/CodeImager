@@ -8,15 +8,17 @@ I use it to turn programs I have written into images so that students cannot jus
 
 To run from the command line:
 
-`python imager.py <textfile> <imagefile>`
+`python imager.py <textfile> <imagefile> (colorscheme)`
+
+`colorscheme` is either `bw` for black on white or `wb` for white on black (more to come!)  If no `colorscheme` is given, it will default to white on black.
 
 
 ## Example
 Original Text file: [adventure.py](./Example/adventure.py)
 
-Resulting Image:
+Resulting Images:
 
-![adventure.png](./Example/adventure.png)
+![adventure_bw.png](./Example/adventure_bw.png)  ![adventure_wb.png](./Example/adventure_wb.png)
 
 ## Planned Features
 
