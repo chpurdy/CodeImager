@@ -1,5 +1,9 @@
 from PIL import Image, ImageDraw, ImageFont
 import sys
+from tkinter import filedialog
+
+
+
 
 
 FONT_SIZE = 16
@@ -40,17 +44,20 @@ def create_image(text_file, out_file, bgcolor=(0,0,0),fgcolor=(255,255,255)):
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python imager.py code.py image.png (colorscheme)")
-        return
+        in_filename =  filedialog.askopenfilename(initialdir = "./",title = "Select file",filetypes = (("Python files","*.py"), ("Java files","*.java"),("Text files","*.txt"),("all files","*.*")))
+        print(in_filename)
+        out_filename =  filedialog.asksaveasfilename(initialdir = "./",title = "Select file",filetypes = (("png files","*.png"),("jpeg files","*.jpg"),("all files","*.*")))
+        print(out_filename)
+        create_image(in_filename,out_filename)
 
-    if len(sys.argv) == 3:
+    elif len(sys.argv) == 3:
         try:
             create_image(sys.argv[1], sys.argv[2])
             print(f"Image {sys.argv[2]} created.")
         except:
             print("Usage: python imager.py code.py image.png (colorscheme)")
 
-    if len(sys.argv) == 4:
+    elif len(sys.argv) == 4:
         if sys.argv[3] == 'bw':
             fgcolor = (0,0,0)
             bgcolor = (255,255,255)
@@ -62,6 +69,7 @@ def main():
             print(f"Image {sys.argv[2]} created.")
         except:
             print("Usage: python imager.py code.py image.png (colorscheme)")
+
 if __name__ == "__main__":
     main()
 
