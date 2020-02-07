@@ -10,4 +10,12 @@ To run from the command line:
 
 `python imager.py <textfile> <imagefile>`
 
+
+## Planned Features
+
+* I would like to add syntax highlighting, but that is way off.
+* A GUI interface allowing a text file to be loaded and an image preview?
+* Better input validation 
+
+
  
