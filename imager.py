@@ -35,7 +35,15 @@ def create_image(text_file, out_file):
 
 
 def main():
-    create_image('adventure.py','adventure.png')
+    if len(sys.argv) < 3:
+        print("Usage: python imager.py code.py image.png")
+        return
+
+    try:
+        create_image(sys.argv[1], sys.argv[2])
+        print(f"Image {sys.argv[2]} created.")
+    except:
+         print("Usage: python imager.py code.py image.png")
 
 if __name__ == "__main__":
     main()
