@@ -15,6 +15,9 @@ def create_image(text_file, out_file, bgcolor=(0,0,0),fgcolor=(255,255,255)):
     Uses text_file to generate an image file saved as out_file
     '''
 
+    filename = text_file.split("/")[-1]
+
+
     text = []
     with open(text_file) as file:
         for line in file:
@@ -32,7 +35,7 @@ def create_image(text_file, out_file, bgcolor=(0,0,0),fgcolor=(255,255,255)):
     img = Image.new("RGB",(width, height),bgcolor)
     draw = ImageDraw.Draw(img)
 
-    
+    draw.text((MARGIN_WIDTH,0),filename,font=FONT,fill=fgcolor)
     for i, line in enumerate(text): # I'm not 100% sure of this spacing
         draw.text((MARGIN_WIDTH,MARGIN_WIDTH+i*FONT_SIZE+2),line,font=FONT,fill=fgcolor)
 
