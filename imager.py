@@ -20,6 +20,7 @@ class App:
         self.font_size = 16
         self.font_file = 'font/Inconsolata-Regular.ttf'
         self.font = ImageFont.truetype(self.font_file,self.font_size)
+        self.set_color('wb')
         self.margin_width = 20
         self.setup()
         
@@ -51,7 +52,25 @@ class App:
         self.sizemenu.add_command(label="22",command=lambda:self.set_size(22))
         self.menu.add_cascade(label="Size",menu=self.sizemenu)
 
+        # Color Menu
+        self.colormenu = Menu(self.menu, tearoff=0)
+        self.colormenu.add_command(label="White on Black",command=lambda:self.set_color('wb'))
+        self.colormenu.add_command(label="Black on White",command=lambda:self.set_color('bw'))
+        self.menu.add_cascade(label="Colors",menu=self.colormenu)
+
         self.root.config(menu=self.menu)
+
+    def set_color(self,colors):
+        if colors == 'wb':
+            self.bgcolor = (0,0,0)
+            self.fgcolor = (255,255,255)
+        
+        elif colors == 'bw':
+            self.bgcolor = (255,255,255)
+            self.fgcolor = (0,0,0)
+
+        if self.image:
+            self.update_image()
 
     def set_size(self, size):
         self.font_size = size
@@ -73,7 +92,7 @@ class App:
         self.update_image()
 
     def update_image(self):
-        self.image = self.create_image(self.infilename,font=self.font)
+        self.image = self.create_image(self.infilename,font=self.font,bgcolor=self.bgcolor, fgcolor=self.fgcolor)
         render = ImageTk.PhotoImage(self.image)
         
         img = Label(self.root, image=render)
